@@ -47,6 +47,21 @@ const ExpenseForm = (props) => {
       amount: +enteredAmount,
       date: new Date(enteredDate),
     };
+    //friendlychat-10ebe
+
+    fetch('https://react-basic-8cf3a-default-rtdb.asia-southeast1.firebasedatabase.app/expense.jsonpdf',
+      {
+        method: "POST",
+        body: JSON.stringify(expenseData)
+      }).then(data => {
+        if (!data.ok) {
+          throw new Error('Failed' + data.status);
+
+        }
+        return data.json();
+      }).catch(ex => {
+        console.log(ex.message);
+      });
 
     props.onSaveExpenseData(expenseData);
     setEnteredTitle('');

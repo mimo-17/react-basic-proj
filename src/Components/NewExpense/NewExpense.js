@@ -18,6 +18,17 @@ const NewExpense = (props) => {
 
 
   const startEditingHandler = () => {
+    fetch('https://react-basic-8cf3a-default-rtdb.asia-southeast1.firebasedatabase.app/tm_user.json').then(data => {
+      return data.json();
+    } ).then(data => {
+      console.log("Inside data")
+      for (const key in data) {
+        console.log(data[key]);
+      }
+    }).catch(ex => {
+      console.log(ex);
+    });  
+
     setIsEditing(true);
   };
 
